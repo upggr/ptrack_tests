@@ -3,7 +3,7 @@
 #copy_all_lines(666);
 remove_faulty_lines('ptrac3344027109318363692',9);
 
-
+ 
 
 function copy_all_lines($position) {
 $keimena = glob("path/*.txt");
