@@ -3,7 +3,7 @@
 #copy_all_lines(666);
 remove_faulty_lines('ptrac3344027109318363692',9);
 
- 
+
 
 function copy_all_lines($position) {
 $keimena = glob("path/*.txt");
@@ -27,7 +27,8 @@ function remove_faulty_lines($file_in,$threshold){
           foreach ($numbers as &$number)
           {
             if ($number != '') {
-              array_push($l_array,floatval($number));
+          //    array_push($l_array,floatval($number));
+           array_push($l_array,$number);
             }
 
           }
