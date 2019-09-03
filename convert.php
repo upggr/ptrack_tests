@@ -14,7 +14,7 @@ $grammi = $grammes[$position];
 file_put_contents("teliko_keimeno.txt", $grammi, FILE_APPEND);
 }
 }
-
+ 
 function remove_faulty_lines($file_in,$file_out,$threshold){
   if ($fh = fopen($file_in, 'r')) {
     $fg = fopen("$file_out", "w");
