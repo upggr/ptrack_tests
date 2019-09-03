@@ -1,7 +1,7 @@
 <?php
 
 #copy_all_lines(666);
-remove_faulty_lines('ptrac3344027109318363692','ptrac3344027109318363692_out.csv');
+remove_faulty_lines('ptrac3344027109318363692','ptrac3344027109318363692_out.csv',100);
 
 
 
@@ -15,25 +15,29 @@ file_put_contents("teliko_keimeno.txt", $grammi, FILE_APPEND);
 }
 }
 
-function remove_faulty_lines($file_in,$file_out){
+function remove_faulty_lines($file_in,$file_out,$threshold){
   if ($fh = fopen($file_in, 'r')) {
     $fg = fopen("$file_out", "w");
       while (!feof($fh)) {
           $line = fgets($fh);
           $numbers = explode(" ", trim($line));
           $l_array=array();
+          $tot = 0;
           foreach ($numbers as &$number)
           {
             if ($number != '') {
+              $tot = $number+$tot;
               array_push($l_array,floatval($number));
             }
 
           }
+          if ($tot > $threshold) {
           fwrite($fg, implode(",",$l_array));
           fwrite($fg, "\n");
+        }
       }
       fclose($fh);
-      fclose($fg); 
+      fclose($fg);
   }
 
 }
