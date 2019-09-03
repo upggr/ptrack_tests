@@ -1,7 +1,7 @@
 <?php
 
 #copy_all_lines(666);
-remove_faulty_lines('ptrac3344027109318363692','ptrac3344027109318363692_out.csv',200);
+remove_faulty_lines('ptrac3344027109318363692','ptrac3344027109318363692_out.csv',9);
 
 
 
@@ -23,16 +23,14 @@ function remove_faulty_lines($file_in,$file_out,$threshold){
           $line = fgets($fh);
           $numbers = explode(" ", trim($line));
           $l_array=array();
-          $tot = 0;
           foreach ($numbers as &$number)
           {
             if ($number != '') {
-              $tot = $number+$tot;
               array_push($l_array,floatval($number));
             }
 
           }
-          if ($tot > $threshold) {
+          if (sizeof($l_array) == $threshold) {
           fwrite($fg, implode(",",$l_array));
           fwrite($fg, "\n");
         }
