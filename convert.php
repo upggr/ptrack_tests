@@ -32,7 +32,7 @@ function remove_faulty_lines($file_in,$file_out,$threshold){
 
           }
           if (sizeof($l_array) == $threshold) {
-          fwrite($fg, implode(",",$l_array));
+          fwrite($fg, implode(" ",$l_array));
           fwrite($fg, "\n");
         }
       }
